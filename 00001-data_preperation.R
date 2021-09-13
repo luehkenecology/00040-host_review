@@ -44,6 +44,9 @@ all <- bind_rows(bfa_USA1,
                  bfa_other2,
                  bfa_other2)
 
+#################################
+# standardize mosquito species names
+#################################
 # read data file to standardize mosquito names
 reval_species <- read_excel("data/speciess.xlsx")
 
@@ -58,6 +61,9 @@ asti <- na.omit(asti)
 all$mosquito_species_new[!is.na(all$mosquito_species)] <- recoderFunc(all$mosquito_species[!is.na(all$mosquito_species)], asti$old, 
                                                                       asti$new)
 
+#################################
+# standardize host group names
+#################################
 # read data file to standardize host group names
 host_group <- read_excel("data/host-group.xlsx")
 
@@ -72,6 +78,9 @@ host_group3 <- na.omit(host_group2)
 all$host_group_new <- recoderFunc(all$host_group, host_group3$old, 
                                   host_group3$new)
 
+#################################
+# standardize host species names
+#################################
 # read data file to standardize host names
 rename_host_scientific <- read_excel("data/Copy of hosts_unify.xlsx")
 

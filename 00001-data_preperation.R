@@ -95,7 +95,8 @@ all_names <- unique(unlist(strsplit(spec_uni, c(" / ", "/ "))))
 
 unique(all_names)
 
-###c
+#################################
+# extract taxonomy of hosts
 #################################
 
 #manual <- c("Reptilia", "Fish")

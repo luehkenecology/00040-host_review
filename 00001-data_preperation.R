@@ -13,6 +13,7 @@ library(tidyverse)
 library(readxl)
 library(stringr)
 library(dplyr)
+library(myTAI)
 
 #################################
 # read functions
@@ -41,12 +42,12 @@ all <- bind_rows(bfa_USA1,
                  bfa_other2,
                  bfa_other2)
 
-ups <- read_excel("data/speciess.xlsx")
+reval_species <- read_excel("data/speciess.xlsx")
 
-A <- data.frame(oldvalue = ups$oldvalue)
+A <- data.frame(oldvalue = reval_species$oldvalue)
 
 asti <- data.frame(old = A, 
-                   new = paste(ups$genus_manual, ups$species_manual,sep = " "))
+                   new = paste(reval_species$genus_manual, reval_species$species_manual,sep = " "))
 asti <- na.omit(asti)
 all$mosquito_species_new[!is.na(all$mosquito_species)] <- recoderFunc(all$mosquito_species[!is.na(all$mosquito_species)], asti$old, 
                                                                       asti$new)
@@ -96,7 +97,6 @@ unique(all_names)
 
 ###c
 #################################
-library(myTAI)
 
 #manual <- c("Reptilia", "Fish")
 #subgenus or subgenus --> genus

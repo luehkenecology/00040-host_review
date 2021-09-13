@@ -20,10 +20,6 @@ source("R/recorderFunc.R")
 #################################
 # read all data
 #################################
-
-
-
-
 bfa_USA1 <- ff("data/bfa_USA_A-E.xlsx")
 bfa_USA2 <- ff("data/bfa_USA_F-M.xlsx")
 bfa_USA3 <- ff("data/bfa_USA_N-Z.xlsx")

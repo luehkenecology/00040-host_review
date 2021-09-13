@@ -23,13 +23,13 @@ source("R/ff.R")
 #################################
 # read all data
 #################################
-bfa_USA1 <- ff("data/bfa_USA_A-E.xlsx")
-bfa_USA2 <- ff("data/bfa_USA_F-M.xlsx")
-bfa_USA3 <- ff("data/bfa_USA_N-Z.xlsx")
-bfa_Europe <- ff("data/bfa_Europe.xlsx")
-bfa_other1 <- ff("data/bfa_other_A-H.xlsx") # sheet "0" geloescht
-bfa_other2 <- ff("data/bfa_other_I-K.xlsx") # sheet "0" geloescht
-bfa_other3 <- ff("data/bfa_other_L-Z.xlsx") # sheet "0" geloescht
+bfa_USA1    <- ff("data/bfa_USA_A-E.xlsx")
+bfa_USA2    <- ff("data/bfa_USA_F-M.xlsx")
+bfa_USA3    <- ff("data/bfa_USA_N-Z.xlsx")
+bfa_Europe  <- ff("data/bfa_Europe.xlsx")
+bfa_other1  <- ff("data/bfa_other_A-H.xlsx") # sheet "0" deleted
+bfa_other2  <- ff("data/bfa_other_I-K.xlsx") # sheet "0" deleted
+bfa_other3  <- ff("data/bfa_other_L-Z.xlsx") # sheet "0" deleted
 
 bfa_USA1$host_point_counts <- as.character(bfa_USA1$host_point_counts)
 

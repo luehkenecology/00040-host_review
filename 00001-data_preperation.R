@@ -91,33 +91,26 @@ rename_common <- data.frame(old = rename_host_scientific$old_common_name,
 # remove NAs in the revalue data frame
 rename_common2 <- na.omit(rename_common)
 
-# revalue
+# revalue common names
 all$host[!is.na(all$host)] <- recoderFunc(all$host[!is.na(all$host)], rename_common2$old, 
                                           rename_common2$new)
 
 rename_scientific <- data.frame(old = rename_host_scientific$old_scientific_name, 
                                 new = rename_host_scientific$final)
+
+# remove NAs in the revalue data frame
 rename_scientific2 <- na.omit(rename_scientific)
 all$host_scientific[!is.na(all$host_scientific)] <- recoderFunc(all$host_scientific[!is.na(all$host_scientific)], rename_scientific2$old, 
                                                                 rename_scientific2$new)
 
 all$host_scientific_new <- ifelse(is.na(all$host_scientific) == T, all$host, all$host_scientific)
 
-table(is.na(all$host_scientific_new))
-
 write.table(all, "output/merged_dataset.csv", sep = ";", col.names = NA)
 
-head(all)
-
+#################################
 # problems
+#################################
 write.table(data.frame(all[is.na(all$host_scientific_new),]) , "e.csv", sep = ";", col.names = NA)
-
-
-spec_uni <- sort(unique(all$host_scientific_new))
-
-all_names <- unique(unlist(strsplit(spec_uni, c(" / ", "/ "))))
-
-unique(all_names)
 
 #################################
 # extract taxonomy of hosts
@@ -126,6 +119,9 @@ unique(all_names)
 #manual <- c("Reptilia", "Fish")
 #subgenus or subgenus --> genus
 
+spec_uni <- sort(unique(all$host_scientific_new))
+
+all_names <- unique(unlist(strsplit(spec_uni, c(" / ", "/ "))))
 
 OST <- lapply(1:length(all_names), function(x) taxonomy( organism =
                                                            as.character(all_names[x]),

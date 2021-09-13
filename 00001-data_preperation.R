@@ -85,16 +85,12 @@ rename_common2 <- na.omit(rename_common)
 # revalue
 all$host[!is.na(all$host)] <- recoderFunc(all$host[!is.na(all$host)], rename_common2$old, 
                                           rename_common2$new)
-table(is.na(all$host))
 
 rename_scientific <- data.frame(old = rename_host_scientific$old_scientific_name, 
                                 new = rename_host_scientific$final)
 rename_scientific2 <- na.omit(rename_scientific)
 all$host_scientific[!is.na(all$host_scientific)] <- recoderFunc(all$host_scientific[!is.na(all$host_scientific)], rename_scientific2$old, 
                                                                 rename_scientific2$new)
-
-table(is.na(all$host_scientific) & is.na(all$host))
-all$host[is.na(all$host_scientific)]
 
 all$host_scientific_new <- ifelse(is.na(all$host_scientific) == T, all$host, all$host_scientific)
 

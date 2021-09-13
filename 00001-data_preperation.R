@@ -32,8 +32,10 @@ bfa_other1  <- ff("data/bfa_other_A-H.xlsx") # sheet "0" deleted
 bfa_other2  <- ff("data/bfa_other_I-K.xlsx") # sheet "0" deleted
 bfa_other3  <- ff("data/bfa_other_L-Z.xlsx") # sheet "0" deleted
 
+# transform host_point_counts to character
 bfa_USA1$host_point_counts <- as.character(bfa_USA1$host_point_counts)
 
+# bind all host-review files
 all <- bind_rows(bfa_USA1,
                  bfa_USA2,
                  bfa_USA3,
@@ -42,8 +44,10 @@ all <- bind_rows(bfa_USA1,
                  bfa_other2,
                  bfa_other2)
 
+# read data file to standardize mosquito names
 reval_species <- read_excel("data/speciess.xlsx")
 
+#
 A <- data.frame(oldvalue = reval_species$oldvalue)
 
 asti <- data.frame(old = A, 

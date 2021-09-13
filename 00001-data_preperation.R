@@ -3,7 +3,7 @@
 #################################
 RPROJ <- list(PROJHOME = normalizePath(getwd()))
 attach(RPROJ)
-rm(RPROJ)
+rm(RPROJ) 
 getwd()
 
 #################################
@@ -82,7 +82,7 @@ all <- bind_rows(bfa_USA1,
                  bfa_other2,
                  bfa_other2)
 
-ups <- read_excel("speciess.xlsx")
+ups <- read_excel("data/speciess.xlsx")
 
 A <- data.frame(oldvalue = ups$oldvalue)
 
@@ -92,7 +92,7 @@ asti <- na.omit(asti)
 all$mosquito_species_new[!is.na(all$mosquito_species)] <- recoderFunc(all$mosquito_species[!is.na(all$mosquito_species)], asti$old, 
                                                                       asti$new)
 
-host_group <- read_excel("host-group.xlsx")
+host_group <- read_excel("data/host-group.xlsx")
 host_group2 <- data.frame(old = host_group$old, 
                           new = host_group$new)
 host_group3 <- na.omit(host_group2)

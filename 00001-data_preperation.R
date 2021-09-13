@@ -16,6 +16,8 @@ library(dplyr)
 
 # read functions
 source("R/recorderFunc.R")
+source("R/ff.R")
+
 
 #################################
 # read all data

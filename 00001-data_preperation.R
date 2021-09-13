@@ -11,6 +11,8 @@ getwd()
 #################################
 library(tidyverse)
 library(readxl)
+library(stringr)
+library(dplyr)
 
 # function
 recoderFunc <- function(data, oldvalue, newvalue) {
@@ -62,8 +64,7 @@ ff <- function(x) {
   bind_rows(list.usa)
 }
 
-library(stringr)
-library(dplyr)
+
 bfa_USA1 <- ff("data/bfa_USA_A-E.xlsx")
 bfa_USA2 <- ff("data/bfa_USA_F-M.xlsx")
 bfa_USA3 <- ff("data/bfa_USA_N-Z.xlsx")
@@ -123,6 +124,7 @@ table(is.na(all$host_scientific_new))
 
 write.table(all, "output/merged_dataset.csv", sep = ";", col.names = NA)
 
+head(all)
 
 # problems
 write.table(data.frame(all[is.na(all$host_scientific_new),]) , "e.csv", sep = ";", col.names = NA)

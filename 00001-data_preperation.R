@@ -53,21 +53,36 @@ asti <- data.frame(old = reval_species$oldvalue,
 
 # remove NAs in the revalue data frame
 asti <- na.omit(asti)
+
+# revalue
 all$mosquito_species_new[!is.na(all$mosquito_species)] <- recoderFunc(all$mosquito_species[!is.na(all$mosquito_species)], asti$old, 
                                                                       asti$new)
 
+# read data file to standardize host group names
 host_group <- read_excel("data/host-group.xlsx")
+
+# construct revalue data frame
 host_group2 <- data.frame(old = host_group$old, 
                           new = host_group$new)
+
+# remove NAs in the revalue data frame
 host_group3 <- na.omit(host_group2)
+
+# revalue
 all$host_group_new <- recoderFunc(all$host_group, host_group3$old, 
                                   host_group3$new)
 
+# read data file to standardize host names
 rename_host_scientific <- read_excel("data/Copy of hosts_unify.xlsx")
 
+# construct revalue data frame
 rename_common <- data.frame(old = rename_host_scientific$old_common_name, 
                             new = rename_host_scientific$final)
+
+# remove NAs in the revalue data frame
 rename_common2 <- na.omit(rename_common)
+
+# revalue
 all$host[!is.na(all$host)] <- recoderFunc(all$host[!is.na(all$host)], rename_common2$old, 
                                           rename_common2$new)
 table(is.na(all$host))

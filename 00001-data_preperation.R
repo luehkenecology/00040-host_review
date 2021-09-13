@@ -47,9 +47,11 @@ all <- bind_rows(bfa_USA1,
 # read data file to standardize mosquito names
 reval_species <- read_excel("data/speciess.xlsx")
 
-# 
+# construct revalue data frame
 asti <- data.frame(old = reval_species$oldvalue, 
                    new = paste(reval_species$genus_manual, reval_species$species_manual,sep = " "))
+
+# remove NAs in the revalue data frame
 asti <- na.omit(asti)
 all$mosquito_species_new[!is.na(all$mosquito_species)] <- recoderFunc(all$mosquito_species[!is.na(all$mosquito_species)], asti$old, 
                                                                       asti$new)
